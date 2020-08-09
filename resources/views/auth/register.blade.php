@@ -9,12 +9,19 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Register Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>REGISTRATION</title>
     <link rel="apple-touch-icon" href="assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+   <link rel="stylesheet" href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
 
     <!-- BEGIN: Vendor CSS-->
+     <!-- BEGIN: Vendor CSS-->
+     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css">
+     <link rel="stylesheet" type="text/css" href="assets/vendors/css/pickers/pickadate/pickadate.css">
+     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css">
     <!-- END: Vendor CSS-->
 
@@ -51,7 +58,7 @@
             </div>
             <div class="content-body">
                 <section class="row flexbox-container">
-                    <div class="fluid-container col-xl-12 col-12 col-lg-12 " >
+                    <div class=" col-xl-12 col-12 col-lg-12 " style="padding: 5%" >
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
                                 <div class="col-lg-5 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
@@ -76,25 +83,18 @@
                                                         <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
                                                         <label for="inputEmail">Email</label>
                                                     </div>
-                                                    <fieldset class="form-group">
-                                                        <select class="custom-select" id="customSelect">
-                                                            <option selected>Nationality</option>
-                                                            <option value="IT">IT</option>
-                                                            <option value="Blade Runner">Blade Runner</option>
-                                                            <option value="Thor Ragnarok">Thor Ragnarok</option>
-                                                        </select>
+                                                    <fieldset class="form-label-group">
+                                                        <h6>Nationality </h6>
+                                                        <select class="selectpicker countrypicker" data-flag="true"></select>
+                                                    </fieldset>
                                                     </fieldset>
                                                     <div class="form-label-group">
                                                         <input type="number" id="contactno" class="form-control" placeholder="Contact No" name="contactno">
                                                         <label for="contactno">Contact No</label>
                                                     </div>
-                                                    <fieldset class="form-group">
-                                                        <select class="custom-select" id="customSelect">
-                                                            <option selected>Country</option>
-                                                            <option value="IT">IT</option>
-                                                            <option value="Blade Runner">Blade Runner</option>
-                                                            <option value="Thor Ragnarok">Thor Ragnarok</option>
-                                                        </select>
+                                                    <fieldset class="form-label-group">
+                                                        <h6>Country of Residence  </h6>
+                                                        <select class="selectpicker countrypicker" data-flag="true"></select>
                                                     </fieldset>
                                                 
                                                     <div class="form-label-group">
@@ -115,7 +115,26 @@
                                                         <input type="text" id="adnumber" class="form-control" placeholder="Admission number" name="Admission number">
                                                         <label for="Admission number">Admission number</label>
                                                     </div>
+                                                    <p>Year of Study </p>
+                                                    <div class="form-label-group" id="date_5">
+                                                      
+                                                        <div class="input-daterange input-group" id="datepicker">
+                                                            <form>
+                                                                <input type='text' class="form-control pickadate" />
+                                                            
+                                                            <span class="input-group-addon p-l-10 p-r-30">to</span>
+                                                            
+                                                                <input type='text' class="form-control pickadate" />
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                         <h5 style="text-align:center">OR</h5>
+                                                    <div class="form-label-group">
+                                                        
+                                                            <input type='text' class="form-control pickadate" />
                                                     
+                                                        <label for="Passout year">Passout year</label>
+                                                    </div>
                                                     <div class="form-label-group">
                                                         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                                                         <label for="inputPassword">Password</label>
@@ -124,8 +143,8 @@
                                                         <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
                                                         <label for="inputConfPassword">Confirm Password</label>
                                                     </div>
-                                                    
-                                                    <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
+                                                   
+                                                <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
                                                     <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
                                                 </form>
                                             </div>
@@ -146,8 +165,14 @@
     <!-- BEGIN: Vendor JS-->
     <script src="assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
     <!-- BEGIN: Page Vendor JS-->
+    <script src="assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="assets/vendors/js/pickers/pickadate/legacy.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -157,6 +182,7 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
+    <script src="assets/js/scripts/pickers/dateTime/pick-a-datetime.js"></script>
     <!-- END: Page JS-->
 
 </body>
