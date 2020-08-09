@@ -9,7 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Form Layouts - Vuexy - Bootstrap HTML admin template</title>
+    <title>Register Page - Vuexy - Bootstrap HTML admin template</title>
     <link rel="apple-touch-icon" href="assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -29,10 +29,11 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/pages/authentication.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="ts/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -40,135 +41,106 @@
 
 <!-- BEGIN: Body-->
 
-
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-   
-
+<body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
-  
-       <div class= "container" style="padding-top: 5%"> 
-        
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-           
+            <div class="content-header row">
+            </div>
             <div class="content-body">
-        
-               
-                <!-- // Basic multiple Column Form section start -->
-                <section id="multiple-column-form">
-                    <div class="row match-height">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Registration</h4>
+                <section class="row flexbox-container">
+                    <div class="fluid-container col-xl-12 col-12 col-lg-12 " >
+                        <div class="card bg-authentication rounded-0 mb-0">
+                            <div class="row m-0">
+                                <div class="col-lg-5 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
+                                    <img src="assets/images/pages/register.jpg" alt="branding logo">
                                 </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <form class="form">
-                                            <div class="form-body">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="fname-column">
-                                                            <label for="first-name-column">First Name</label>
-                                                        </div>
-                                                    </div>
-                                                         <div class="col-md-6 col-12">
-                                                            <fieldset class="form-group">
-                                                                <select class="custom-select" id="customSelect">
-                                                                    <option selected>Nationality</option>
-                                                                    <option value="IT">IT</option>
-                                                                    <option value="Blade Runner">Blade Runner</option>
-                                                                    <option value="Thor Ragnarok">Thor Ragnarok</option>
-                                                                </select>
-                                                            </fieldset>
-                                                            </div>
-                                                       
-                                                    
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="adnumber" class="form-control" placeholder="Admission number" name="Admission number">
-                                                            <label for="Admission number">Admission number</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="number" id="contactno" class="form-control" placeholder="Contact No" name="contactno">
-                                                            <label for="contactno">Contact No</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
-                                                            <label for="country-floating">Country</label>
-                                                        </div>
-                                                    </div><div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column">
-                                                            <label for="city-column">City</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <label for="country-floating">Connection with PACE GROUP</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="custom-select" id="customSelect">
-                                                                    <option selected>Schoolname</option>
-                                                                    <option value="IT">it</option>
-                                                                    <option value="Blade Runner">Blade Runner</option>
-                                                                    <option value="Thor Ragnarok">Thor Ragnarok</option>
-                                                                </select>
-                                                             
-                                                            </fieldset>
-                                                        </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                         
-                                                            <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email">
-                                                            <label for="email-id-column">Email</label>
-                                                        </div>
-                                                    </div>
-                                                     <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <div class="controls">
-                                                                <input type="password" name="password" class="form-control" placeholder="Your Password" required data-validation-required-message="The password field is required" minlength="6">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                     <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <div class="controls">
-                                                                <input type="password" name="con-password" class="form-control" placeholder="Confirm Password" required data-validation-match-match="password" data-validation-required-message="The Confirm password field is required" minlength="6">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="col-12">
-                                                        <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                        
-                                                    </div>
-                                                </div>
+                                <div class="col-lg-6 col-12 p-0">
+                                    <div class="card rounded-0 mb-0 p-2">
+                                        <div class="card-header pt-50 pb-1">
+                                            <div class="card-title">
+                                                <h3 class="mb-0">Create Account</h3>
                                             </div>
-                                        </form>
+                                        </div>
+                                        <h5 class="px-2">Personal Details</h5>
+                                        <div class="card-content">
+                                            <div class="card-body pt-0">
+                                                <form action="index.html">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="inputName" class="form-control" placeholder="Full Name" required>
+                                                        <label for="inputName">Full Name</label>
+                                                    </div>
+                                                    <div class="form-label-group">
+                                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                                                        <label for="inputEmail">Email</label>
+                                                    </div>
+                                                    <fieldset class="form-group">
+                                                        <select class="custom-select" id="customSelect">
+                                                            <option selected>Nationality</option>
+                                                            <option value="IT">IT</option>
+                                                            <option value="Blade Runner">Blade Runner</option>
+                                                            <option value="Thor Ragnarok">Thor Ragnarok</option>
+                                                        </select>
+                                                    </fieldset>
+                                                    <div class="form-label-group">
+                                                        <input type="number" id="contactno" class="form-control" placeholder="Contact No" name="contactno">
+                                                        <label for="contactno">Contact No</label>
+                                                    </div>
+                                                    <fieldset class="form-group">
+                                                        <select class="custom-select" id="customSelect">
+                                                            <option selected>Country</option>
+                                                            <option value="IT">IT</option>
+                                                            <option value="Blade Runner">Blade Runner</option>
+                                                            <option value="Thor Ragnarok">Thor Ragnarok</option>
+                                                        </select>
+                                                    </fieldset>
+                                                
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="city-column" class="form-control" placeholder="City" name="city-column">
+                                                        <label for="city-column">City</label>
+                                                    </div>
+                                                    <h5>Connection with PACE GROUP </h5>
+                                                    <fieldset class="form-group">
+                                                        <select class="custom-select" id="customSelect">
+                                                            <option selected>Schoolname</option>
+                                                            <option value="IT">it</option>
+                                                            <option value="Blade Runner">Blade Runner</option>
+                                                            <option value="Thor Ragnarok">Thor Ragnarok</option>
+                                                        </select>
+                                                     
+                                                    </fieldset>
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="adnumber" class="form-control" placeholder="Admission number" name="Admission number">
+                                                        <label for="Admission number">Admission number</label>
+                                                    </div>
+                                                    
+                                                    <div class="form-label-group">
+                                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                                        <label for="inputPassword">Password</label>
+                                                    </div>
+                                                    <div class="form-label-group">
+                                                        <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
+                                                        <label for="inputConfPassword">Confirm Password</label>
+                                                    </div>
+                                                    
+                                                    <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
+                                                    <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- // Basic Floating Label Form section end -->
-             <div>
+
             </div>
         </div>
-  
+    </div>
     <!-- END: Content-->
-
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
-
-    <!-- BEGIN: Footer-->
-    <footer class="footer footer-static footer-light">
-       
-    </footer>
-    <!-- END: Footer-->
 
 
     <!-- BEGIN: Vendor JS-->
