@@ -38,7 +38,7 @@ class LoginController extends Controller
                 $this->redirectTo = '/hod';
                 return $this->redirectTo;
                 break;
-            case 0:
+            case 3:
                 $this->redirectTo = '/user';
                 return $this->redirectTo;
                 break;

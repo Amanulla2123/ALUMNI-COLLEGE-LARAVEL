@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/addhodtech', function () {
+    return view('admin.addhodtech');
+});
+Route::get('/postapproval', function () {
+    return view('admin.postapproval');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,4 +1,4 @@
-@extends('layouts.adlayout')
+@extends('admin.adlayout')
 
 @section('content')
     <!-- END: Main Menu-->
@@ -28,7 +28,7 @@
                    
                     <section id="profile-info">
                         <div class="row">
-                            <div class="col-lg-7 col-12">
+                            <div class="col-lg-8 col-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-start align-items-center mb-1">
@@ -263,11 +263,16 @@
                                         <button type="button" class="btn btn-sm btn-primary">Post Comment</button>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-8 text-center">
+                                        <button type="button" class="btn btn-primary block-element mb-1">Load More</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-5 col-12">
-                                <div class="card" style="height: 548.984px;">
+                            <div class="col-lg-4 col-12">
+                                <div class="card" style="height: 600px;">
                                     <div class="card-header mb-1">
-                                        <h4 class="card-title">Card With Header And Footer</h4>
+                                        <h4 class="card-title">NEWS</h4>
                                     </div>
                                     <div class="card-content">
                                         <img class="img-fluid" src="assets/images/slider/04.jpg" alt="Card image cap">
@@ -283,10 +288,10 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 col-12">
-                                    <div class="card" style="height: 548.984px;">
+                               
+                                    <div class="card" style="height: 600px;">
                                         <div class="card-header mb-1">
-                                            <h4 class="card-title">Card With Header And Footer</h4>
+                                            <h4 class="card-title">EVENTS</h4>
                                         </div>
                                         <div class="card-content">
                                             <img class="img-fluid" src="assets/images/slider/04.jpg" alt="Card image cap">
@@ -304,11 +309,7 @@
                                     </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <button type="button" class="btn btn-primary block-element mb-1">Load More</button>
-                            </div>
-                        </div>
+                       
                     </section>
                 </div>
 

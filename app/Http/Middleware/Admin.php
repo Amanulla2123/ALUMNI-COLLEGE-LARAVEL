@@ -27,7 +27,7 @@ class Admin
             return redirect()->route('hod');
         }
 
-        if (Auth::user()->role == 0 ) {
+        if (Auth::user()->role == 3 ) {
             return redirect()->route('user');
         }
     }

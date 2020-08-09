@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class User
 {
     /**
@@ -28,7 +28,7 @@ class User
            
         }
 
-        if (Auth::user()->role == 0) {
+        if (Auth::user()->role == 3) {
             return $next($request);
           
         }

@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class Hod
 {
     /**
@@ -28,7 +28,7 @@ class Hod
            
         }
 
-        if (Auth::user()->role == 0) {
+        if (Auth::user()->role == 3) {
             return redirect()->route('user');
         }
     }
