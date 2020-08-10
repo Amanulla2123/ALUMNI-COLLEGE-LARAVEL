@@ -58,7 +58,7 @@
             </div>
             <div class="content-body">
                 <section class="row flexbox-container">
-                    <div class=" col-xl-12 col-12 col-lg-12 " style="padding: 5%" >
+                    <div class=" col-xl-12 col-12 col-lg-12 " >
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
                                 <div class="col-lg-5 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
@@ -143,8 +143,14 @@
                                                         <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
                                                         <label for="inputConfPassword">Confirm Password</label>
                                                     </div>
-                                                   
-                                                <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
+                                                    <fieldset class="form-group">
+                                                        <label for="basicInputFile">Profile Pic</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                        </div>
+                                                    </fieldset>
+                                             
                                                     <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
                                                 </form>
                                             </div>
