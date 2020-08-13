@@ -49,30 +49,22 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
+                                        <li><a class="active" href="">home</a></li>
                                        
+                                        <li><a href="">About</a></li>
                                        
-                                        <li><a href="about.html">About</a></li>
-                                       
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-center">
-                                <div class="live_chat_btn">
-                                <a class="" href="login" >
-                                    
-                                    <span>Log in</span>
+                                <a href= "login"  class="boxed_btn">
+                                    <i class="flaticon-user"></i>
+                                    <span>log in</span>
                                 </a>
-                            </div>
-                                <div class="live_chat_btn">
-                                    <a class="" href="register">
-                                      
-                                        <span>Register</span>
-                                    </a>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-12">
@@ -96,10 +88,9 @@
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6">
-                        <div class="slider_info">
-                            <h3>PACE ALUMINI
-                                </h3>
-                            <a href="login"class="boxed_btn">Get started.....</a>
+                        <div class="slider_info  justify-content-center">
+                            <h3>PACE ALUMINI</h3>
+                                <a href="login"class="boxed_btn  " >Get started.....</a>
                         </div>
                     </div>
                 </div>

@@ -30,5 +30,8 @@ class Admin
         if (Auth::user()->role == 3 ) {
             return redirect()->route('user');
         }
+        if (Auth::user()->role == 4 ) {
+            return redirect()->route('teacher');
+        }
     }
 }

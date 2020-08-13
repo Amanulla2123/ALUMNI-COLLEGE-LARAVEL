@@ -7,7 +7,7 @@ html {
   letter-spacing: .01rem; }
   html body {
     height: 100%;
-    background-color: rgb(233, 233, 240);
+    background-color: #f8f8f8;
     direction: ltr;
     /*
       * Blank page
@@ -100,7 +100,7 @@ html {
     html body p {
       line-height: 1.5rem; }
     html body.bg-full-screen-image {
-      background: url('assets/images/pages/vuexy-login-bg.jpg') no-repeat center center;
+      background: url(../../app-assets/images/pages/vuexy-login-bg.jpg) no-repeat center center;
       background-size: cover; }
     html body.blank-page .content {
       margin-left: 0; }
@@ -112,7 +112,6 @@ html {
     html body.blank-page .content-wrapper {
       padding: 0 !important;
       margin-top: 0; }
-      
       html body.blank-page .content-wrapper .flexbox-container {
         display: flex;
         align-items: center;
@@ -543,7 +542,7 @@ body.fixed-footer footer.footer-dark {
       align-items: center;
       margin-top: 1.35rem; }
       .main-menu .navbar-header .navbar-brand .brand-logo {
-        background: url("assets/images/logo/vuexy-logo.png") no-repeat;
+        background: url("../../app-assets/images/logo/vuexy-logo.png") no-repeat;
         background-position: -65px -54px;
         height: 24px;
         width: 35px; }

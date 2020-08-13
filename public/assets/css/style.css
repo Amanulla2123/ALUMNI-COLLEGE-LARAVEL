@@ -36,7 +36,7 @@
 /* 1. Theme default css */
 /* line 4, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_reset.scss */
 body {
-  font-family: "Crimson Text", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -505,11 +505,10 @@ h3 {
 /* line 113, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_btn.scss */
 .boxed_btn {
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
-  color:#fff;
+  color: #fff;
   padding: 17px 50px;
-  background: #5e6fec;
+  background: #6c40e4;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -1023,7 +1022,7 @@ h3 {
 .header-area .main-header-area .main-menu ul li a::before {
   position: absolute;
   content: "";
-  background: #5e6fec;
+  background: #04D2C8;
   width: 100%;
   height: 3px;
   bottom: -1px;
@@ -1203,18 +1202,14 @@ h3 {
 
 /* line 244, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_header.scss */
 .header-area .log_chat_area .live_chat_btn a {
-  color:grey;
-  font-family: "Poppins", sans-serif;
-
-  text-transform: capitalize;
-  font-weight: 400;
+  color: #fff;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 244, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_header.scss */
   .header-area .log_chat_area .live_chat_btn a {
     padding: 12px 12px;
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
@@ -1233,7 +1228,8 @@ h3 {
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-color:white;
+  /*  background-image: url(../img/banner/123.JPEG);  */
+   background-color: white; 
 }
 
 /* line 5, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_slider.scss */
@@ -1294,7 +1290,6 @@ h3 {
 .slider_area .single_slider .slider_info h3 {
   color:grey;
   font-size: 60px;
-  font-family: "Poppins", sans-serif;
   text-transform: capitalize;
   font-weight: 400;
   line-height: 70px;

@@ -23,10 +23,15 @@ Route::get('/addhodtech', function () {
 Route::get('/postapproval', function () {
     return view('admin.postapproval');
 });
-
+//Route::get('/addschool', function () {
+    //return view('admin.addschool');
+//});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::get('/hod', 'HodController@index')->name('hod')->middleware('hod');
 Route::get('/user', 'USerController@index')->name('user')->middleware('user');
+Route::get('/teacher', 'TeacherController@index')->name('teacher')->middleware('teacher');
+Route::resource('addschool', 'AddschoolController');
+Route::resource('addevent', 'AddeventController');

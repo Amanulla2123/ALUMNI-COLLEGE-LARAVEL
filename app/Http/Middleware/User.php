@@ -32,5 +32,10 @@ class User
             return $next($request);
           
         }
+        if (Auth::user()->role == 4) {
+            return redirect()->route('teacher');
+           
+        }
+
     }
 }
