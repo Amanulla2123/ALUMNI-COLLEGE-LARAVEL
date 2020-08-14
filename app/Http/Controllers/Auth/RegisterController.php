@@ -15,6 +15,13 @@ class RegisterController extends Controller
      
     public function showregistrationform()
 {
+    $data = [1];
+
+    if (property_exists($this, 'registerView')) {
+        return view($this->registerView, compact('data'));
+    }
+
+
     $schools = Addschool::all();
 
     return view('auth.register', ['schools' => $schools]);

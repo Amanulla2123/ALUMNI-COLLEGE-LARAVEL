@@ -20,13 +20,30 @@ Route::get('/', function () {
 Route::get('/addhodtech', function () {
     return view('admin.addhodtech');
 });
-Route::get('/postapproval', function () {
-    return view('admin.postapproval');
+Route::get('/calender', function () {
+    return view('admin.calender');
 });
+/* Route::get('/postapproval', function () {
+    return view('admin.postapproval');
+}); */
 //Route::get('/addschool', function () {
     //return view('admin.addschool');
 //});
-Auth::routes();
+//Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
@@ -35,3 +52,6 @@ Route::get('/user', 'USerController@index')->name('user')->middleware('user');
 Route::get('/teacher', 'TeacherController@index')->name('teacher')->middleware('teacher');
 Route::resource('addschool', 'AddschoolController');
 Route::resource('addevent', 'AddeventController');
+Route::resource('addnews', 'AddnewsController');
+Route::resource('addhodtech', 'AddhodtechController');
+

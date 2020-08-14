@@ -12,7 +12,20 @@
             <!-- Basic Horizontal form layout section start -->
             <section id="basic-horizontal-layouts">
                 <div class="row match-height">
-              
+                    @if(count($errors)>0)
+                    <div class="alert alert-danger">
+                    <ul>
+                    @foreach($errors->all() as $error )
+                        <li> {{$error}}</li>
+                    @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if(\Session::has('success'))
+                <div class="alert alert-success">
+                <p>{{\Session::get('success')}}</p>
+                </div>
+                @endif 
                     <div class="col-md-6 col-12 offset-md-3">
                         <div class="card">
                             <div class="card-header">
@@ -20,7 +33,8 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-horizontal">
+                                    <form class="form form-horizontal"  method="POST"  enctype ="multipart/form-data" action="{{action('AddhodtechController@store')}}"  >
+                                        {{csrf_field()}}
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-12">
@@ -30,10 +44,10 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left"> <fieldset class="form-group">
-                                                                <select class="form-control" id="basicSelect">
+                                                                <select class="form-control" id="usertype" name="usertype">
                                                         
-                                                                    <option>HOD</option>
-                                                                    <option>TEACHER</option>
+                                                                    <option value="hod">HOD</option>
+                                                                    <option value="teacher">TEACHER</option>
                                                                 </select>
                                                             </fieldset>
                                                                 <div class="form-control-position">
@@ -50,7 +64,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" id="fname-icon" class="form-control" name="fname-icon" placeholder="First Name">
+                                                                <input type="text" id="firstname" class="form-control" name="firstname" placeholder="First Name">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-user"></i>
                                                                 </div>
@@ -65,7 +79,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="email" id="email-icon" class="form-control" name="email-id-icon" placeholder="Email">
+                                                                <input type="email" id="email" class="form-control" name="email" placeholder="Email">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-mail"></i>
                                                                 </div>
@@ -80,7 +94,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="number" id="contact-icon" class="form-control" name="contact-icon" placeholder="Mobile">
+                                                                <input type="number" id="mobile" class="form-control" name="mobile" placeholder="Mobile">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-smartphone"></i>
                                                                 </div>
@@ -95,7 +109,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="password" id="pass-icon" class="form-control" name="contact-icon" placeholder="Password">
+                                                                <input type="password" id="password" class="form-control" name="password" placeholder="Password">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-lock"></i>
                                                                 </div>

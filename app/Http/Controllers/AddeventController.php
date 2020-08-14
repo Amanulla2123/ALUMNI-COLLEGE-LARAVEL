@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Addevent;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 
 class AddeventController extends Controller
@@ -12,8 +13,9 @@ class AddeventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.addevent');
+    { 
+        $addevents =Addevent::all();
+        return view('admin.addevent')->with('addevents',$addevents);
     }
 
     /**
@@ -23,7 +25,7 @@ class AddeventController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.addevent');
     }
 
     /**
@@ -34,7 +36,49 @@ class AddeventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate($request,[
+            'title'=> 'required',
+            'subtitle'=> 'required',
+            'attachment1'=> 'required',
+            'description'=> 'required',
+            
+           
+        ]);
+        if($request->hasFile('attachment1')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('attachment1')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('attachment1')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('attachment1')->storeAs('public/attachment1', $fileNameToStore);
+
+
+           //$thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
+           // $thumb = Image::make($request->file('Profilepic')->getRealPath());
+            //$thumb->resize(80, 80);
+            //$thumb->save('storage/profile/'.$thumbStore);
+		  
+
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+
+        $addevents=new Addevent;
+           
+            $addevents->attachment1 = $fileNameToStore;
+            $addevents->title=$request->input('title');
+            $addevents->subtitle = $request-> input('subtitle');
+            $addevents->description=$request-> input('description');
+           
+        $addevents->save();
+        return redirect('addevent')->with('success','Inserted Successfully...');
     }
 
     /**
@@ -45,7 +89,7 @@ class AddeventController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
