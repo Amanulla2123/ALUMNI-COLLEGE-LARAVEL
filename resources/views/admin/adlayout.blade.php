@@ -11,16 +11,12 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>ADMIN DASHBOARD</title>
-    <link rel="apple-touch-icon" href="assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/fullcalendar.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/daygrid.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/timegrid.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/pickers/pickadate/pickadate.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -35,7 +31,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="assets/css/pages/users.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/plugins/calendars/fullcalendar.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -75,13 +70,14 @@
                                 </div>
                                 <!-- select.bookmark-select-->
                                 <!--   option Chat-->
-                               
+                                <!--   option email-->
+                                <!--   option todo-->
                                 <!--   option Calendar-->
                             </li>
                         </ul>
                     </div>
                     <ul class="nav navbar-nav float-right">
-                        
+                       
                         <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
                         <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon feather icon-search"></i></a>
                             <div class="search-input">
@@ -143,10 +139,18 @@
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">Alumini Admin</span><span class="user-status">Available</span></div><span><img class="round" src="assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::user()->name }}</span><span class="user-status">Available</span></div><span><img class="round" src="assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 {{ __('Logout') }}
+                             </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
                             </div>
                         </li>
                     </ul>
@@ -253,11 +257,13 @@
                 </li>
                 <li class=" navigation-header"><span>Roles</span>
                 </li>
+                <li class=" nav-item"><a href="/approveuser"><i class="feather icon-user-plus"></i>Approve User</span></a>
+                </li>
                 <li class=" nav-item"><a href="/addhodtech"><i class="feather icon-user-plus"></i>Add HOD/Teacher</a>
                 </li>
                 <li class=" nav-item"><a href="/postapproval"><i class="feather icon-check-square"></i>Post Approval</span></a>
                 </li>
-                <li class=" nav-item"><a href="/calender"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
+                <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
                 </li>
                 
                 <li class=" navigation-header"><span>pages</span>
@@ -268,6 +274,8 @@
                 </li><br>
                 <li class="active nav-item"><a href="addschool"><i class="fa fa-university"></i><span class="menu-title" data-i18n="Profile">Add School</span></a>
                 </li>
+
+               
          
         </div>
     </div>
@@ -282,8 +290,8 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">  <a class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio" target="_blank"></a></span><span class="float-md-right d-none d-md-block"><i class="feather icon-heart pink"></i></span>
-            {{-- <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button> --}}
+        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="" target="_blank">PACE ALUMINI</a>All rights Reserved</span><span class="float-md-right d-none d-md-block"><i class="feather icon-heart pink"></i></span>
+            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
         </p>
     </footer>
     <!-- END: Footer-->
@@ -300,21 +308,10 @@
     <script src="assets/js/core/app-menu.js"></script>
     <script src="assets/js/core/app.js"></script>
     <script src="assets/js/scripts/components.js"></script>
-    <script src="assets/vendors/js/extensions/moment.min.js"></script>
-    <script src="assets/vendors/js/calendar/fullcalendar.min.js"></script>
-    <script src="assets/vendors/js/calendar/extensions/daygrid.min.js"></script>
-    <script src="assets/vendors/js/calendar/extensions/timegrid.min.js"></script>
-    <script src="assets/vendors/js/calendar/extensions/interactions.min.js"></script>
-    <script src="assets/vendors/js/pickers/pickadate/picker.js"></script>
-    <script src="assets/vendors/js/pickers/pickadate/picker.date.js"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="assets/js/core/app-menu.js"></script>
-    <script src="assets/js/core/app.js"></script>
-    <script src="assets/js/scripts/components.js"></script>
     <script src="assets/js/scripts/pages/user-profile.js"></script>
-    <script src="assets/js/scripts/extensions/fullcalendar.js"></script>
     <!-- END: Page JS-->
 
 </body>

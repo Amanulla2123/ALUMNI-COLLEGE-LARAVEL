@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Addevent;
-use Illuminate\Support\Facades\Schema;
+
+use Auth;
+use App\Createpost;
+use App\User;
 use Illuminate\Http\Request;
 
-class AddeventController extends Controller
+
+class CreatepostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +16,13 @@ class AddeventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $addevents =Addevent::all();
-        return view('admin.addevent')->with('addevents',$addevents);
+    {
+
        
+        $addposts=Createpost::orderBy('created_at', 'desc')->paginate(1);
+        return view('user.createpost')->with('addposts',$addposts);
+     
+
     }
 
     /**
@@ -26,7 +32,7 @@ class AddeventController extends Controller
      */
     public function create()
     {
-        return view('admin.addevent');
+        //
     }
 
     /**
@@ -37,7 +43,6 @@ class AddeventController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request,[
             'title'=> 'required',
             'subtitle'=> 'required',
@@ -56,7 +61,7 @@ class AddeventController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('attachment1')->storeAs('public/attachment1', $fileNameToStore);
+            $path = $request->file('attachment1')->storeAs('public/students/posts', $fileNameToStore);
 
 
            //$thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
@@ -69,17 +74,28 @@ class AddeventController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
+      
 
+      
+        $uid=Auth::user()->id;
+       
+        /* $stud=DB::table('students')
+        ->select('id')
+        ->where('userid', $uid)
+        ->get();
+ */
 
-        $addevents=new Addevent;
+        $addpost=new Createpost;
+         
+            $addpost->userId=$uid ;
+            $addpost->attachment1 = $fileNameToStore;
+            $addpost->title=$request->input('title');
+            $addpost->subtitle = $request-> input('subtitle');
+            $addpost->description=$request-> input('description');
            
-            $addevents->attachment1 = $fileNameToStore;
-            $addevents->title=$request->input('title');
-            $addevents->subtitle = $request-> input('subtitle');
-            $addevents->description=$request-> input('description');
-           
-        $addevents->save();
-        return redirect('addevent')->with('success','Inserted Successfully...');
+        $addpost->save();
+      
+        return redirect('createpost')->with('success','Inserted Successfully...');
     }
 
     /**
@@ -90,7 +106,7 @@ class AddeventController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -124,6 +140,6 @@ class AddeventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

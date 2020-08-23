@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use App\Createpost;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-class AddhodtechController extends Controller
+use Illuminate\Support\Facades\DB;
+
+class ViewpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,12 @@ class AddhodtechController extends Controller
      */
     public function index()
     {
-        return view('admin.addhodtech');
-    }
 
+       
+
+       
+       return view('admin.viewpost');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -34,35 +38,7 @@ class AddhodtechController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'role'=> 'required',
-            'firstname'=> 'required',
-            'email'=> 'required',
-            'password'=> 'required',
-            
-           
-        ]);
-        
-       
-        $user =new User;
-            $user->role = $request-> input('role');
-            $user->name = $request-> input('firstname');
-            $user->email=$request->input('email');
-            $user->password = Hash::make($request->input('password'));
-
-          
-     
-            //'EmailId'=> $request->get(EmailId),
-            //'Password'=> $request->get(Password),
-            //'Rpassword'=> $request->get(Rpassword),
-        
-
-    $user->save();
-      return redirect('addhodtech')->with('success','Inserted Successfully...');
-
-
-
-
+        //
     }
 
     /**
@@ -72,8 +48,13 @@ class AddhodtechController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {    
+        $data =  array();
+         $data['posts']= DB::table('createposts')
+        ->join('students','createposts.userId','students.userid')
+         ->select('createposts.id','createposts.title','createposts.subtitle','createposts.description','createposts.attachment1','createposts.created_at','students.name')
+         ->where('createposts.id',$id)->get();
+        return view('admin.viewpost',compact("data")); 
     }
 
     /**
@@ -107,6 +88,25 @@ class AddhodtechController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post= Createpost::find($id);
+        Createpost::where('id', $id)->delete();
+        return redirect('postapproval')->with('success','Data deleted');
+        
+
+
     }
+    
+
+        public function approve($id)
+        {
+       
+           
+       
+            Createpost::where('id',$id)->update(['approve'=>1]);
+            return redirect('/postapproval')->with('success', 'role changed');
+            
+        }
+ 
+     
+
 }

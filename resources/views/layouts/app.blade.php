@@ -8,7 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>PACE ALUMINI</title>
-
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

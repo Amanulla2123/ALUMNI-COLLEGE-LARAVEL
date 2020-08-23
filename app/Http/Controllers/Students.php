@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-class AddhodtechController extends Controller
+
+class Students extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class AddhodtechController extends Controller
      */
     public function index()
     {
-        return view('admin.addhodtech');
+        
     }
 
     /**
@@ -23,7 +23,7 @@ class AddhodtechController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,35 +34,7 @@ class AddhodtechController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'role'=> 'required',
-            'firstname'=> 'required',
-            'email'=> 'required',
-            'password'=> 'required',
-            
-           
-        ]);
         
-       
-        $user =new User;
-            $user->role = $request-> input('role');
-            $user->name = $request-> input('firstname');
-            $user->email=$request->input('email');
-            $user->password = Hash::make($request->input('password'));
-
-          
-     
-            //'EmailId'=> $request->get(EmailId),
-            //'Password'=> $request->get(Password),
-            //'Rpassword'=> $request->get(Rpassword),
-        
-
-    $user->save();
-      return redirect('addhodtech')->with('success','Inserted Successfully...');
-
-
-
-
     }
 
     /**

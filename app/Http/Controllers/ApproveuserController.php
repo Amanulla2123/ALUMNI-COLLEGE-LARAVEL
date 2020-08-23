@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Students;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-class AddhodtechController extends Controller
+use Illuminate\Support\Facades\DB;
+class ApproveuserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +15,13 @@ class AddhodtechController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.addhodtech');
+    {      
+
+      
+        $approves = Students::orderBy('created_at', 'desc')->paginate(4);
+        return view('admin.approveuser')->with('approves',$approves);
+      
+       
     }
 
     /**
@@ -34,35 +42,7 @@ class AddhodtechController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'role'=> 'required',
-            'firstname'=> 'required',
-            'email'=> 'required',
-            'password'=> 'required',
-            
-           
-        ]);
-        
-       
-        $user =new User;
-            $user->role = $request-> input('role');
-            $user->name = $request-> input('firstname');
-            $user->email=$request->input('email');
-            $user->password = Hash::make($request->input('password'));
-
-          
-     
-            //'EmailId'=> $request->get(EmailId),
-            //'Password'=> $request->get(Password),
-            //'Rpassword'=> $request->get(Rpassword),
-        
-
-    $user->save();
-      return redirect('addhodtech')->with('success','Inserted Successfully...');
-
-
-
-
+        //
     }
 
     /**
@@ -94,19 +74,37 @@ class AddhodtechController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update($id)
+    {      
+        
+       
 
+     
+
+         
+    }
+     public function approve($userid)
+     {
+       
+ 
+       
+        Students::where('userid',$userid)->update(['role'=>3]);
+        User::where('id',$userid)->update(['role'=>3]);
+        return redirect('/approveuser')->with('success', 'role changed');
+        
+    }
+ 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($userid)
     {
-        //
+        $approves= Students::find($userid);
+        Students::where('userid', $userid)->delete();
+        return redirect('approveuser')->with('success','Data deleted');
+        
     }
 }

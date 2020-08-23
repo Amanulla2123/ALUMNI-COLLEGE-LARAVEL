@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use\App\Createposts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-class AddhodtechController extends Controller
+use Illuminate\Support\Facades\DB;
+class PostapprovalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,16 @@ class AddhodtechController extends Controller
      */
     public function index()
     {
-        return view('admin.addhodtech');
+        
+       $data = DB::table('createposts')
+       ->select('createposts.id','createposts.title','createposts.subtitle','createposts.created_at','createposts.attachment1','createposts.description','students.name','students.Schoolname','students.Profile')
+       ->join('students','createposts.userId','students.userid')->paginate(5);
+       return view('admin.postapproval',['data'=>$data]); 
+
+
+        /*  $posts =Createpost::all();
+        return view('admin.postapproval')->with('posts',$posts); */
+       
     }
 
     /**
@@ -34,35 +43,7 @@ class AddhodtechController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'role'=> 'required',
-            'firstname'=> 'required',
-            'email'=> 'required',
-            'password'=> 'required',
-            
-           
-        ]);
-        
-       
-        $user =new User;
-            $user->role = $request-> input('role');
-            $user->name = $request-> input('firstname');
-            $user->email=$request->input('email');
-            $user->password = Hash::make($request->input('password'));
-
-          
-     
-            //'EmailId'=> $request->get(EmailId),
-            //'Password'=> $request->get(Password),
-            //'Rpassword'=> $request->get(Rpassword),
-        
-
-    $user->save();
-      return redirect('addhodtech')->with('success','Inserted Successfully...');
-
-
-
-
+        //
     }
 
     /**
@@ -73,7 +54,7 @@ class AddhodtechController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

@@ -73,6 +73,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.85);
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/669/565/non_2x/futuristic-scientific-hexagonal-dark-blue-background.jpg);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -4978,6 +4979,7 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
+  background-color: #a3b1c3;
 }
 
 .card-title {
@@ -7044,7 +7046,7 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-  background-color:rgba(105, 19, 243, 0.548) !important;
+  background-color: rgb(101 45 193) !important;
 }
 
 .bg-transparent {

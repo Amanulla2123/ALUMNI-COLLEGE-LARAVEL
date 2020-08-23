@@ -44,14 +44,27 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/approval', 'HomeController@approval')->name('approval');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
+});
+
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::get('/hod', 'HodController@index')->name('hod')->middleware('hod');
 Route::get('/user', 'USerController@index')->name('user')->middleware('user');
 Route::get('/teacher', 'TeacherController@index')->name('teacher')->middleware('teacher');
-Route::resource('addschool', 'AddschoolController');
+
 Route::resource('addevent', 'AddeventController');
 Route::resource('addnews', 'AddnewsController');
 Route::resource('addhodtech', 'AddhodtechController');
-
+Route::resource('approveuser', 'ApproveuserController');
+Route::get('/admin/approveuser/{userid}', 'ApproveuserController@approve');
+Route::resource('postapproval', 'PostapprovalController');
+Route::resource('createpost', 'CreatepostController');
+Route::resource('/viewpost', 'ViewpostController');
+Route::get('/admin.viewpost.{id}', 'ViewpostController@show');
+Route::get('/admin/approve/{id}', 'ViewpostController@approve');
+Route::resource('addfriend', 'AddfriendController');

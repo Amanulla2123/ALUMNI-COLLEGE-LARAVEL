@@ -89,6 +89,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_info  justify-content-center">
+                            {{-- <img src="assets/images/logo.png" alt=""> --}}
                             <h3>PACE ALUMINI</h3>
                                 <a href="login"class="boxed_btn  " >Get started.....</a>
                         </div>

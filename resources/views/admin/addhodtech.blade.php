@@ -7,25 +7,25 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-      
+        @if(count($errors)>0)
+        <div class="alert alert-danger">
+        <ul>
+        @foreach($errors->all() as $error )
+            <li> {{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+      @endif
+        @if(\Session::has('success'))
+        <div class="alert alert-success">
+        <p>{{\Session::get('success')}}</p>
+        </div>
+        @endif 
         <div class="content-body">
             <!-- Basic Horizontal form layout section start -->
             <section id="basic-horizontal-layouts">
                 <div class="row match-height">
-                    @if(count($errors)>0)
-                    <div class="alert alert-danger">
-                    <ul>
-                    @foreach($errors->all() as $error )
-                        <li> {{$error}}</li>
-                    @endforeach
-                    </ul>
-                </div>
-                @endif
-                @if(\Session::has('success'))
-                <div class="alert alert-success">
-                <p>{{\Session::get('success')}}</p>
-                </div>
-                @endif 
+                   
                     <div class="col-md-6 col-12 offset-md-3">
                         <div class="card">
                             <div class="card-header">
@@ -44,10 +44,11 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="position-relative has-icon-left"> <fieldset class="form-group">
-                                                                <select class="form-control" id="usertype" name="usertype">
-                                                        
-                                                                    <option value="hod">HOD</option>
-                                                                    <option value="teacher">TEACHER</option>
+                                                                <select class="form-control" id="role" name="role">
+                                                                    
+                                                                    <option value="1">ADMIN</option>
+                                                                    <option value="2">HOD</option>
+                                                                    <option value="4">TEACHER</option>
                                                                 </select>
                                                             </fieldset>
                                                                 <div class="form-control-position">
@@ -87,21 +88,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4">
-                                                            <span>Mobile</span>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="position-relative has-icon-left">
-                                                                <input type="number" id="mobile" class="form-control" name="mobile" placeholder="Mobile">
-                                                                <div class="form-control-position">
-                                                                    <i class="feather icon-smartphone"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
                                                 <div class="col-12">
                                                     <div class="form-group row">
                                                         <div class="col-md-4">

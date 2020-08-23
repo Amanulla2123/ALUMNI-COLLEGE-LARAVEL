@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="container"><img  class= "mx-auto d-block" src="assets/images/pages/graphic-1.png" height="200px" alt="">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        
+        <div class="col-md-7">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+               {{--  <div class="card-header"></div> --}}
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
-
+                          <h5><strong>PERSONAL DETAILS</h5></strong>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-3 col-form-label text-md-left">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-left"style="padding:10px">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -39,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                            <label for="gender" class="col-md-3 col-form-label text-md-left"style="padding:10px">Gender</label>
 
                             <div class="col-md-6">
                              <select class="form-control" name="gender" id="gender" required>
@@ -57,7 +59,7 @@
 
 
                         <div class="form-group row">
-                            <label for="Nationality" class="col-md-4 col-form-label text-md-right">Nationality</label>
+                            <label for="Nationality" class="col-md-3 col-form-label text-md-left"style="padding:10px">Nationality</label>
 
                             <div class="col-md-6">
                              <select class="form-control" name="Nationality" id="Nationality" required>
@@ -312,7 +314,7 @@
                         </div>
                      
                        <div class="form-group row">
-                            <label for="Contactno" class="col-md-4 col-form-label text-md-right">Contact Number</label>
+                            <label for="Contactno" class="col-md-3 col-form-label text-md-left"style="padding:10px">Contact Number</label>
 
                             <div class="col-md-6">
                                 <input id="Contactno" type="text" class="form-control @error('Contactno') is-invalid @enderror" name="Contactno" value="{{ old('Contactno') }}" required >
@@ -325,11 +327,11 @@
                             </div>
                         </div>
                         
-                       {{--  <div class="form-group row">
-                            <label for="Country of residence" class="col-md-4 col-form-label text-md-right">Country of residence</label>
+                       <div class="form-group row">
+                            <label for="Countryofresidence" class="col-md-3 col-form-label text-md-left"style="padding:10px">Country of residence</label>
 
                             <div class="col-md-6">
-                             <select class="form-control" name="Country of residence" id="Country of residence" required>
+                             <select class="form-control" name="Countryofresidence" id="Countryofresidence" required>
                                 <option value="  " selected>Select a country</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
@@ -572,15 +574,15 @@
                                 <option value="ZW">Zimbabwe</option>
                           
                                 </select>
-                                @error('Country of residence')
+                                @error('Countryofresidence')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div> --}}
+                        </div> 
                         <div class="form-group row">
-                            <label for="City" class="col-md-4 col-form-label text-md-right">City</label>
+                            <label for="City" class="col-md-3 col-form-label text-md-left"style="padding:10px">City</label>
 
                             <div class="col-md-6">
                                 <input id="City" type="text" class="form-control @error('City') is-invalid @enderror" name="City" value="{{ old('City') }}" required >
@@ -592,8 +594,9 @@
                                 @enderror
                             </div>
                         </div>
+                        <h5><strong>CONNECTION WITH PACE GROUP</strong></h5>
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Select School</label>
+                            <label for="gender" class="col-md-3 col-form-label text-md-left"style="padding:10px">Select School</label>
 
                             <div class="col-md-6">
                              <select class="form-control" name="Schoolname" id="Schoolname" required>
@@ -612,7 +615,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="Adnumber" class="col-md-4 col-form-label text-md-right">Admission Number</label>
+                            <label for="Adnumber" class="col-md-3 col-form-label text-md-left"style="padding:10px">Admission Number</label>
 
                             <div class="col-md-6">
                                 <input id="Adnumber" type="text" class="form-control @error('Adnumber') is-invalid @enderror" name="Adnumber"  required >
@@ -625,7 +628,7 @@
                             </div>
                         </div> 
                         <div class="form-group row">
-                            <label for="Passoutyear" class="col-md-4 col-form-label text-md-right">Passoutyear</label>
+                            <label for="Passoutyear" class="col-md-3 col-form-label text-md-left"style="padding:10px">Passoutyear</label>
 
                             <div class="col-md-6">
                                 <input id="Passoutyear" type="month" min="2003-01" class="form-control @error('Passoutyear') is-invalid @enderror" name="Passoutyear" >
@@ -637,10 +640,35 @@
                                 @enderror
                             </div>
                         </div>
-                       
+                        <h6>Year Of Study</h6>
+                        <div class="form-group row">
+                            <label for="YearOfStudy" class="col-md-3 col-form-label text-md-right"style="padding:10px">From</label>
+
+                            <div class="col-md-6">
+                                <input id="Fromyear" type="month" min="2003-01" class="form-control @error('Fromyear') is-invalid @enderror" name="Fromyear" >
+
+                                @error('Fromyear')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="YearOfStudy" class="col-md-3 col-form-label text-md-right"style="padding:10px">To</label>
+                            <div class="col-md-6">
+                                <input id="Toyear" type="month" min="2003-01" class="form-control @error('Toyear') is-invalid @enderror" name="Toyear" >
+
+                                @error('Toyear')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-left"style="padding:10px">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -655,14 +683,14 @@
 
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-3 col-form-label text-md-left"style="padding:10px">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Profile" class="col-md-4 col-form-label text-md-right">Profile pic</label>
+                            <label for="Profile" class="col-md-3 col-form-label text-md-left"style="padding:10px">Profile pic</label>
 
                             <div class="col-md-6">
                                 <input id="Profile" type="file"  name="Profile">

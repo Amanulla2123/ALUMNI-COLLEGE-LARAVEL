@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Students;
 use App\Addschool;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -83,13 +84,12 @@ class RegisterController extends Controller
             'gender'=>['required', 'string'],
             'Contactno' => ['required','string'],
             'Nationality' =>['required'],
-           // 'Country of residence' => ['required','string'],
-        
+            'Countryofresidence' => ['required','string'],
             'Schoolname' =>['required','string'],
             'Adnumber' =>['required','string'], 
             'Profile'=> ['required'], 
-            //'Fromyear' => ['required'],
-            //'Toyear' => ['required'],
+            'Fromyear' => ['required'],
+            'Toyear' => ['required'],
             'Passoutyear'=> ['required'], 
            
            
@@ -103,56 +103,46 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
+    
     {
+       
 
+        $imageName = time() . '.' . $data['Profile']->getClientOriginalExtension();
 
-        return User::create([   
-                'name' => $data['name'],
+        $data['Profile']->move(
+        base_path() . '/public/upload/', $imageName
+        );
+        
+
+   
+                $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                
+                
+            ]);
+            
+      
+        $user->student = Students::create([
+                'userid' => $user->id,
                 'email' => $data['email'],
+                'name' => $data['name'],
                 'gender'=>$data['gender'],
                 'Nationality' => $data['Nationality'],
                 'Contactno' => $data['Contactno'], 
-            // 'Country of residence' => $data['Country of residence'],
+                'Countryofresidence' => $data['Countryofresidence'],
                 'City' => $data['City'],
                 'password' => Hash::make($data['password']),
-                'School name' => $data['Schoolname'],
-               
-                'Admission number' => $data['Adnumber'],
-                //'Fromyear' => $data['Fromyear'],
-                //'Toyear' => $data['Toyear'],
+                'Schoolname' => $data['Schoolname'],
+                'Admissionnumber' => $data['Adnumber'],
+                'Fromyear' => $data['Fromyear'],
+                'Toyear' => $data['Toyear'],
                 'Passoutyear'=> $data['Passoutyear'], 
-                'Profile'=> $data['Profile'], 
-          
-        ]);
-       
-        if($request->hasFile('Profile')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('Profile')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('Profile')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('Profile')->storeAs('public/profile', $fileNameToStore);
+                'Profile'=> $imageName,
 
-
-           $thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
-           $thumb = Image::make($request->file('Profile')->getRealPath());
-            $thumb->resize(80, 80);
-            $thumb->save('storage/profile/'.$thumbStore);
-		  
-
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-       /*  if (request()->hasFile(key:'Profile')){
-            $Profile=request()->file(key:'Profile')->getClientOrginalname();
-            request()->file(key:'Profile')->storeAs(path:'Profile',name:$user->id.'/'.$Profile,option:'');
-            $user->update{['Profile'=>$Profile]};
-
-        }
-        return user; */
+         ]); 
+        
+        return $user;
     }
 }
