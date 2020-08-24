@@ -9,19 +9,7 @@
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Profile</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a>
-                                </li>
-                                <li class="breadcrumb-item active">Profile
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
@@ -139,121 +127,42 @@
                                             <i class="feather icon-message-square font-medium-2 mr-50"></i>77
                                         </p>
                                     </div>
+                                    {{-- comment section --}}
+                                    @foreach ($data['comment'] as $comment ) 
+                                    @if ($post->id == $comment->postId) 
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="avatar mr-50">
                                             <img src="assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" height="30" width="30">
                                         </div>
                                         <div class="user-page-info">
-                                            <h6 class="mb-0">Kitty Allanson</h6>
-                                            <span class="font-small-2">orthoplumbate morningtide naphthaline exarteritis</span>
+                                            <h6 class="mb-0"> {{$comment->name}}</h6>
+                                        <span class="font-small-2">{{$comment->comment}}</span>
                                         </div>
-                                        <div class="ml-auto cursor-pointer">
+                                       {{--  <div class="ml-auto cursor-pointer">
                                             <i class="feather icon-heart mr-50"></i>
                                             <i class="feather icon-message-square"></i>
-                                        </div>
+                                        </div> --}}
                                     </div>
-                                    <div class="d-flex justify-content-start align-items-center mb-2">
-                                        <div class="avatar mr-50">
-                                            <img src="assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
-                                        </div>
-                                        <div class="user-page-info">
-                                            <h6 class="mb-0">Jeanie Bulgrin</h6>
-                                            <span class="font-small-2">blockiness pandemy metaxylene speckle coppy</span>
-                                        </div>
-                                        <div class="ml-auto cursor-pointer">
-                                            <i class="feather icon-heart mr-50"></i>
-                                            <i class="feather icon-message-square"></i>
-                                        </div>
-                                    </div>
+                                    @else 
+                                    <p></p>
+                                    @endif
+                                    @endforeach
+                                   
+                                    <form class="" method="post"  enctype ="multipart/form-data" action="{{action('UserController@store', $post->id)}}">
+                                        {{csrf_field()}}
                                     <fieldset class="form-label-group mb-50">
-                                        <textarea class="form-control" id="label-textarea" rows="3" placeholder="Add Comment"></textarea>
+                                        <textarea class="form-control" id="comment" rows="3" name="comment" placeholder="Add Comment"></textarea>
                                         <label for="label-textarea">Add Comment</label>
                                     </fieldset>
-                                    <button type="button" class="btn btn-sm btn-primary">Post Comment</button>
+                                    <button type="submit" class="btn btn-primary"> <i class="feather icon-edit-1"></i>POST COMMENT</button>
+                                </form>
                                 </div>
                             </div>
                             @endforeach
                             @else 
                             <p>NO POSTS</p>
                             @endif
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-start align-items-center mb-1">
-                                        <div class="avatar mr-1">
-                                            <img src="assets/images/profile/user-uploads/user-01.jpg" alt="avtar img holder" height="45" width="45">
-                                        </div>
-                                        <div class="user-page-info">
-                                            <h6 class="mb-0">Leeanna Alvord</h6>
-                                            <span class="font-small-2">10 Dec 2018 at 5:35 AM</span>
-                                        </div>
-                                        <div class="ml-auto user-like"><i class="feather icon-heart"></i></div>
-                                    </div>
-                                    <p>Wafer I love brownie jelly bonbon tart. Candy jelly beans powder brownie biscuit. Jelly marzipan oat cake cake.</p>
-                                    <iframe src="https://www.youtube.com/embed/WALZwXyxpHQ" class="w-100 height-250"></iframe>
-                                    <div class="d-flex justify-content-start align-items-center mb-1">
-                                        <div class="d-flex  cursor-pointeralign-items-center">
-                                            <i class="feather icon-heart font-medium-2 mr-50"></i>
-                                            <span>269</span>
-                                        </div>
-                                        <div class="ml-2">
-                                            <ul class="list-unstyled users-list m-0  d-flex align-items-center">
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Vinnie Mostowy" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Elicia Rieske" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Julee Rossignol" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-10.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Darcey Nooner" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Elicia Rieske" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li class="d-inline-block pl-50">
-                                                    <span>+264 more</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <p class="ml-auto d-flex align-items-center">
-                                            <i class="feather icon-message-square font-medium-2 mr-50"></i>98
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-start align-items-center mb-1">
-                                        <div class="avatar mr-50">
-                                            <img src="assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
-                                        </div>
-                                        <div class="user-page-info">
-                                            <h6 class="mb-0">Darcey Nooner</h6>
-                                            <span class="font-small-2">I love cupcake danish jujubes sweet.</span>
-                                        </div>
-                                        <div class="ml-auto cursor-pointer">
-                                            <i class="feather icon-heart mr-50"></i>
-                                            <i class="feather icon-message-square"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-start align-items-center mb-2">
-                                        <div class="avatar mr-50">
-                                            <img src="assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" height="30" width="30">
-                                        </div>
-                                        <div class="user-page-info">
-                                            <h6 class="mb-0">Lai Lewandowski</h6>
-                                            <span class="font-small-2">Wafer I love brownie jelly bonbon tart apple pie</span>
-                                        </div>
-                                        <div class="ml-auto cursor-pointer">
-                                            <i class="feather icon-heart mr-50"></i>
-                                            <i class="feather icon-message-square"></i>
-                                        </div>
-                                    </div>
-                                    <fieldset class="form-label-group mb-50">
-                                        <textarea class="form-control" id="label-textarea3" rows="3" placeholder="Add Comment"></textarea>
-                                        <label for="label-textarea3">Add Comment</label>
-                                    </fieldset>
-                                    <button type="button" class="btn btn-sm btn-primary">Post Comment</button>
-                                </div>
-                            </div>
+                   
                         </div>
                         {{-- event display --}}
                         <div class="col-lg-4 col-12">

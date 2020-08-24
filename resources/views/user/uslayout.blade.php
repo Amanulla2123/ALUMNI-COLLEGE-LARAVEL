@@ -17,8 +17,10 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/css/ui/prism.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/file-uploaders/dropzone.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/daygrid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/timegrid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/pickers/pickadate/pickadate.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -29,17 +31,17 @@
     <link rel="stylesheet" type="text/css" href="assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/semi-dark-layout.css">
 
+   
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="assets/css/pages/users.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/plugins/file-uploaders/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/plugins/calendars/fullcalendar.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- END: Custom CSS-->
-
 </head>
 <!-- END: Head-->
 
@@ -256,7 +258,7 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="/admin"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+                <li class=" nav-item"><a href="/user"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                    
                 </li>
                 <li class=" navigation-header"><span>Roles</span>
@@ -264,7 +266,7 @@
                 <li class=" nav-item"><a href="/addfriend"><i class="feather icon-user-plus"></i>Add FRIENDS</a>
                 </li>
                 
-                <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
+                <li class=" nav-item"><a href="calenderuser"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
                 </li>
                 
                 <li class=" navigation-header"><span>pages</span>
@@ -289,30 +291,37 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="" target="_blank">PACE ALUMINI</a>All rights Reserved</span><span class="float-md-right d-none d-md-block"><i class="feather icon-heart pink"></i></span>
-            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+           {{--  <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button> --}}
         </p>
     </footer>
     <!-- END: Footer-->
 
 
-    <!-- BEGIN: Vendor JS-->
-    <script src="assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
-    <script src="assets/vendors/js/extensions/dropzone.min.js"></script>
-    <script src="assets/vendors/js/ui/prism.min.js"></script>
-    <!-- BEGIN: Page Vendor JS-->
-    <!-- END: Page Vendor JS-->
+  <!-- BEGIN: Vendor JS-->
+  <script src="assets/vendors/js/vendors.min.js"></script>
+  <script src="assets/vendors/js/extensions/moment.min.js"></script>
+  <script src="assets/vendors/js/calendar/fullcalendar.min.js"></script>
+  <script src="assets/vendors/js/calendar/extensions/daygrid.min.js"></script>
+  <script src="assets/vendors/js/calendar/extensions/timegrid.min.js"></script>
+  <script src="assets/vendors/js/calendar/extensions/interactions.min.js"></script>
+  <script src="assets/vendors/js/pickers/pickadate/picker.js"></script>
+  <script src="assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+  <!-- BEGIN Vendor JS-->
 
-    <!-- BEGIN: Theme JS-->
-    <script src="assets/js/core/app-menu.js"></script>
-    <script src="assets/js/core/app.js"></script>
-    <script src="assets/js/scripts/components.js"></script>
-    <!-- END: Theme JS-->
+  <!-- BEGIN: Page Vendor JS-->
+  <!-- END: Page Vendor JS-->
 
-    <!-- BEGIN: Page JS-->
-    <script src="assets/js/scripts/pages/user-profile.js"></script>
-    <script src="assets/js/scripts/extensions/dropzone.js"></script>
-    <!-- END: Page JS-->
+  <!-- BEGIN: Theme JS-->
+  <script src="assets/js/core/app-menu.js"></script>
+  <script src="assets/js/core/app.js"></script>
+  <script src="assets/js/scripts/components.js"></script>
+ 
+  <!-- END: Theme JS-->
+
+  <!-- BEGIN: Page JS-->
+  <script src="assets/js/scripts/pages/user-profile.js"></script>
+  <script src="assets/js/scripts/extensions/fullcalendar.js"></script>
+  <!-- END: Page JS-->
 
 </body>
 <!-- END: Body-->

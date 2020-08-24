@@ -14,7 +14,7 @@
                 <h3 class="page-title">REGISTERD SCHOOL</h3>
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"> <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#myModal">ADD SCHOOL</button></li>
+                    <li class="breadcrumb-item"> <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-university"></i>  ADD SCHOOL  </button></li>
                 </ol>
                 </nav>
             </div>

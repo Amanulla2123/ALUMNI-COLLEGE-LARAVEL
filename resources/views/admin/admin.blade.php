@@ -202,11 +202,12 @@
                                            {{$data['addevents']->links()}}
                                          </div>
                                           <div class="card-content " >
-                                               <h5> {{$addevent->title}} </h5><hr>
-                                               <br>
-                                               <h6>{{$addevent->subtitle}}</h6>
-                                               <br>      
+                                              
                                            <div class="card-body">
+                                            <h5> {{$addevent->title}} </h5><hr>
+                                            <br>
+                                            <h6>{{$addevent->subtitle}}</h6>
+                                            <br>      
                                                    <img  style="width:280px" src="storage/attachment1/{{$addevent->attachment1}}"  alt="Card image cap"> 
                                                   <p class="card-text">{{$addevent->description}}</p>
                                            </div>

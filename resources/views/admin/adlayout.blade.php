@@ -17,6 +17,10 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/daygrid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/calendars/extensions/timegrid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/css/pickers/pickadate/pickadate.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -27,10 +31,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/semi-dark-layout.css">
 
+   
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="assets/css/pages/users.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/plugins/calendars/fullcalendar.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -263,7 +269,7 @@
                 </li>
                 <li class=" nav-item"><a href="/postapproval"><i class="feather icon-check-square"></i>Post Approval</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
+                <li class=" nav-item"><a href="/calender"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
                 </li>
                 
                 <li class=" navigation-header"><span>pages</span>
@@ -272,7 +278,7 @@
                 </li><br>
                 <li class="active nav-item"><a href="addnews"><i class="feather icon-plus-square"></i><span class="menu-title" data-i18n="Profile">News Update</span></a>
                 </li><br>
-                <li class="active nav-item"><a href="addschool"><i class="fa fa-university"></i><span class="menu-title" data-i18n="Profile">Add School</span></a>
+                <li class="active nav-item"><a href="/addschool"><i class="fa fa-university"></i><span class="menu-title" data-i18n="Profile">Add School</span></a>
                 </li>
 
                
@@ -291,7 +297,7 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="" target="_blank">PACE ALUMINI</a>All rights Reserved</span><span class="float-md-right d-none d-md-block"><i class="feather icon-heart pink"></i></span>
-            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+           {{--  <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button> --}}
         </p>
     </footer>
     <!-- END: Footer-->
@@ -299,6 +305,13 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="assets/vendors/js/vendors.min.js"></script>
+    <script src="assets/vendors/js/extensions/moment.min.js"></script>
+    <script src="assets/vendors/js/calendar/fullcalendar.min.js"></script>
+    <script src="assets/vendors/js/calendar/extensions/daygrid.min.js"></script>
+    <script src="assets/vendors/js/calendar/extensions/timegrid.min.js"></script>
+    <script src="assets/vendors/js/calendar/extensions/interactions.min.js"></script>
+    <script src="assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="assets/vendors/js/pickers/pickadate/picker.date.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -308,10 +321,12 @@
     <script src="assets/js/core/app-menu.js"></script>
     <script src="assets/js/core/app.js"></script>
     <script src="assets/js/scripts/components.js"></script>
+   
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
     <script src="assets/js/scripts/pages/user-profile.js"></script>
+    <script src="assets/js/scripts/extensions/fullcalendar.js"></script>
     <!-- END: Page JS-->
 
 </body>

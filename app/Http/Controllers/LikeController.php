@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use\App\Createposts;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-class PostapprovalController extends Controller
+
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,16 +13,7 @@ class PostapprovalController extends Controller
      */
     public function index()
     {
-        
-       $data = DB::table('createposts')
-       ->select('createposts.id','createposts.title','createposts.subtitle','createposts.created_at','createposts.attachment1','createposts.description','students.name','students.Schoolname','students.Profile')
-       ->join('students','createposts.userId','students.userid')->orderBy('created_at', 'desc')->paginate(5);
-       return view('admin.postapproval',['data'=>$data]); 
-
-
-        /*  $posts =Createpost::all();
-        return view('admin.postapproval')->with('posts',$posts); */
-       
+      return view('user.user');
     }
 
     /**
@@ -54,7 +45,7 @@ class PostapprovalController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

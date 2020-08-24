@@ -23,6 +23,9 @@ Route::get('/addhodtech', function () {
 Route::get('/calender', function () {
     return view('admin.calender');
 });
+Route::get('/calenderuser', function () {
+    return view('user.calenderuser');
+});
 /* Route::get('/postapproval', function () {
     return view('admin.postapproval');
 }); */
@@ -54,17 +57,20 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::get('/hod', 'HodController@index')->name('hod')->middleware('hod');
-Route::get('/user', 'USerController@index')->name('user')->middleware('user');
+Route::get('/user', 'UserController@index')->name('user')->middleware('user');
 Route::get('/teacher', 'TeacherController@index')->name('teacher')->middleware('teacher');
 
-Route::resource('addevent', 'AddeventController');
-Route::resource('addnews', 'AddnewsController');
-Route::resource('addhodtech', 'AddhodtechController');
-Route::resource('approveuser', 'ApproveuserController');
-Route::get('/admin/approveuser/{userid}', 'ApproveuserController@approve');
-Route::resource('postapproval', 'PostapprovalController');
-Route::resource('createpost', 'CreatepostController');
-Route::resource('/viewpost', 'ViewpostController');
-Route::get('/admin.viewpost.{id}', 'ViewpostController@show');
-Route::get('/admin/approve/{id}', 'ViewpostController@approve');
-Route::resource('addfriend', 'AddfriendController');
+Route::resource('addevent', 'AddeventController')->middleware('admin');
+Route::resource('addnews', 'AddnewsController')->middleware('admin');
+Route::resource('addhodtech', 'AddhodtechController')->middleware('admin');
+Route::resource('addschool', 'AddschoolController')->middleware('admin');
+Route::resource('approveuser', 'ApproveuserController')->middleware('admin');
+Route::get('/admin/approveuser/{userid}', 'ApproveuserController@approve')->middleware('admin');
+Route::resource('postapproval', 'PostapprovalController')->middleware('admin');
+Route::resource('createpost', 'CreatepostController')->middleware('user');
+Route::resource('/viewpost', 'ViewpostController')->middleware('user');
+Route::get('/admin.viewpost.{id}', 'ViewpostController@show')->middleware('admin');
+Route::get('/admin/approve/{id}', 'ViewpostController@approve')->middleware('admin');
+Route::resource('addfriend', 'AddfriendController')->middleware('user');
+//Route::resource('user', 'LikeController')->middleware('user');
+Route::post('/user/{id}', 'UserController@store')->name('user')->middleware('user');
