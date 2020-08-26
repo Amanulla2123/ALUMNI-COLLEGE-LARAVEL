@@ -16,7 +16,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-start align-items-center mb-1">
                 <div class="avatar mr-1">
-                    <img src="assets/images/profile/user-uploads/user-01.jpg" alt="avtar img holder" height="45" width="45">
+                    <img src="upload/{{$post->Profile}}" alt="avtar img holder" height="45" width="45">
                 </div>
                 <div class="user-page-info">
                 <h6 class="mb-0">{{$post->name}} </h6>

@@ -16,8 +16,6 @@ class ViewpostController extends Controller
     {
 
        
-
-       
        return view('admin.viewpost');
     }
     /**
@@ -52,7 +50,7 @@ class ViewpostController extends Controller
         $data =  array();
          $data['posts']= DB::table('createposts')
         ->join('students','createposts.userId','students.userid')
-         ->select('createposts.id','createposts.title','createposts.subtitle','createposts.description','createposts.attachment1','createposts.created_at','students.name')
+         ->select('createposts.id','createposts.title','createposts.subtitle','createposts.description','createposts.attachment1','createposts.created_at','students.name','students.Profile')
          ->where('createposts.id',$id)->get();
         return view('admin.viewpost',compact("data")); 
     }
@@ -103,7 +101,7 @@ class ViewpostController extends Controller
            
        
             Createpost::where('id',$id)->update(['approve'=>1]);
-            return redirect('/postapproval')->with('success', 'role changed');
+            return redirect('/postapproval')->with('success', 'post approved');
             
         }
  

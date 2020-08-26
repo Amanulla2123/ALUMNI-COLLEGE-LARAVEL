@@ -16,7 +16,7 @@ class PostapprovalController extends Controller
         
        $data = DB::table('createposts')
        ->select('createposts.id','createposts.title','createposts.subtitle','createposts.created_at','createposts.attachment1','createposts.description','students.name','students.Schoolname','students.Profile')
-       ->join('students','createposts.userId','students.userid')->orderBy('created_at', 'desc')->paginate(5);
+       ->join('students','createposts.userId','students.userid','students.Profile')->orderBy('created_at', 'desc')->paginate(5);
        return view('admin.postapproval',['data'=>$data]); 
 
 

@@ -1,6 +1,7 @@
 @extends('user.uslayout')
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -31,7 +32,7 @@
                                     <img class="img-fluid bg-cover rounded-0 w-100" src="assets/images/profile/user-uploads/cover.jpg" alt="User Profile Image">
                                 </div>
                                 <div class="profile-img-container d-flex align-items-center justify-content-between">
-                                    <img src="assets/images/profile/user-uploads/user-11.jpg" class="rounded-circle img-border box-shadow-1" alt="Card image">
+                                    <img src="upload/{{ Auth::user()->Profile }}" class="rounded-circle img-border box-shadow-1" alt="Card image">
                                     <div class="float-right">
                                         <button type="button" class="btn btn-icon btn-icon rounded-circle btn-primary mr-1">
                                             <i class="feather icon-edit-2"></i>
@@ -61,11 +62,7 @@
                                             <li class="nav-item px-sm-0">
                                                 <a href="#" class="nav-link font-small-3">Friends</a>
                                             </li>
-                                            <li class="nav-item px-sm-0">
-                                                <a href="#" class="nav-link font-small-3">Videos</a>
-                                            </li>
-                                            <li class="nav-item px-sm-0">
-                                                <a href="#" class="nav-link font-small-3">Events</a>
+                                           
                                             </li>
                                         </ul>
                                     </div>
@@ -83,7 +80,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="avatar mr-1">
-                                            <img src="assets/images/profile/user-uploads/user-01.jpg" alt="avtar img holder" height="45" width="45">
+                                            <img src="upload/{{$post->Profile}}" alt="avtar img holder" height="45" width="45">
                                         </div>
                                         <div class="user-page-info">
                                             <p class="mb-0">{{$post->name}}</p>
@@ -95,36 +92,65 @@
                                     <h6>{{$post->subtitle}}</h6>
                                     <p>{{$post->description}}</p>
                                     <img class="img-fluid rounded-sm mb-2" src="storage/students/posts/{{$post->attachment1}}" alt="img "  height="300"  width="670">
-
+                                      
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="d-flex align-items-center">
-                                            <i class="feather icon-heart font-medium-2 mr-50"></i>
-                                            <span>145</span>
-                                        </div>
+                                            <?php $likeme=0; ?>
+                                            @foreach ($data['likes'] as $like )
+                                            
+                                            @if($like->postId == $post->id && $like->likeduserId == Auth::user()->id )
+                                         <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50 text-danger"></i>
+                                            </a>
+                                            <?php $likeme=1;?>
+                                            <script>
+                                                 
+                                                $('#like{{$post->id}}').on("click",function(){  
+                                                  window.location.href = '/user/user/{{$post->id}}';
+                                                });
+                                                </script>
+                                                @endif
+                                                @endforeach
+                                                @if($likeme==0)
+                                                <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50"></i>
+                                                </a>
+                                                <script>
+                                                     
+                                                    $('#like{{$post->id}}').on("click",function(){  
+                                                      window.location.href = '/user/user/{{$post->id}}';
+                                                    });
+                                                    </script>
+
+                                                @endif
+                                            
+                                            <?php $count=0;?>
+                                            <span style="color:red">
+                                                @foreach($data['likes'] as $like)
+                                                    @if($post->id==$like->postId)
+                                                        <?php $count++;?>
+                                                        @endif
+                                                       @endforeach
+                                                       {{$count}} 
+                                                       &nbsp;</span><span style="color:blue"> LIKES</span>
+                                             </div>
                                         <div class="ml-2">
                                             <ul class="list-unstyled users-list m-0  d-flex align-items-center">
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Trina Lynes" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-1.jpg" alt="Avatar" height="30" width="30">
+                                                <?php $flag=0;?>
+                                                @foreach($data['likes'] as $like)
+                                                @if($post->id==$like->postId)
+                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="{{$like->name}}" class="avatar pull-up">
+                                                    <img class="media-object rounded-circle" src="upload/{{$like->Profile}}" alt="Avatar" height="30" width="30">
                                                 </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Lilian Nenez" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-2.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Alberto Glotzbach" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="George Nordic" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
-                                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Vinnie Mostowy" class="avatar pull-up">
-                                                    <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-4.jpg" alt="Avatar" height="30" width="30">
-                                                </li>
+                                                <?php $flag++;?>
+                                                @endif
+                                                @endforeach
                                                 <li class="d-inline-block pl-50">
-                                                    <span>+140 more</span>
+                                                    <span>&nbsp;   {{$flag}} </span>
                                                 </li>
                                             </ul>
                                         </div>
                                         <p class="ml-auto d-flex align-items-center">
-                                            <i class="feather icon-message-square font-medium-2 mr-50"></i>77
+                                           
+                                            <i class="feather icon-message-square font-medium-2 mr-50"></i>77 
                                         </p>
                                     </div>
                                     {{-- comment section --}}
@@ -132,13 +158,13 @@
                                     @if ($post->id == $comment->postId) 
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="avatar mr-50">
-                                            <img src="assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" height="30" width="30">
+                                            <img src="upload/{{$comment->Profile}}" alt="Avatar" height="30" width="30">
                                         </div>
                                         <div class="user-page-info">
                                             <h6 class="mb-0"> {{$comment->name}}</h6>
                                         <span class="font-small-2">{{$comment->comment}}</span>
                                         </div>
-                                       {{--  <div class="ml-auto cursor-pointer">
+                                        {{--  <div class="ml-auto cursor-pointer">
                                             <i class="feather icon-heart mr-50"></i>
                                             <i class="feather icon-message-square"></i>
                                         </div> --}}
@@ -154,7 +180,7 @@
                                         <textarea class="form-control" id="comment" rows="3" name="comment" placeholder="Add Comment"></textarea>
                                         <label for="label-textarea">Add Comment</label>
                                     </fieldset>
-                                    <button type="submit" class="btn btn-primary"> <i class="feather icon-edit-1"></i>POST COMMENT</button>
+                                    <button type="submit" class="btn btn-primary"> <i class="feather icon-edit-1"></i>    POST COMMENT</button>
                                 </form>
                                 </div>
                             </div>
@@ -166,42 +192,170 @@
                         </div>
                         {{-- event display --}}
                         <div class="col-lg-4 col-12">
-                             @if (count ($data['addevents'])>0)
-                             @foreach ($data['addevents'] as $addevent )  
-                                <div class="card" style="height: 600px;">
-                                 <div class="card-header mb-1">
-                                    <h4 class="card-title">Events</h4>
-                                    {{$data['addevents']->links()}}
-                                 </div>
-                                 <div class="card-content " >
-                                        <h5> {{$addevent->title}} </h5><hr>
-                                        <br>
-                                        <h6>{{$addevent->subtitle}}</h6>
-                                        <br>      
-                                    <div class="card-body">
-                                            <img  style="width:280px" src="storage/attachment1/{{$addevent->attachment1}}"  alt="Card image cap"> 
-                                           <p class="card-text">{{$addevent->description}}</p>
-                                    </div>
-                                 </div>
-                                 <div class="card-footer text-muted">
-                                       <span class="float-left">posted:{{$addevent->created_at}}</span>
-                                      {{--  <span class="float-right">
-                                           <a href="#" class="card-link">Read More <i class="fa fa-angle-right"></i></a>
-                                       </span> --}}
+                            <div class="card" style="height: 600px;">
+                                <div class="card-header mb-1">
+                                   <h4 class="card-title">Events</h4>  
+                                </div>
+                               <div class="card-content">
+                                   <div class="card-body">
+                                       <div id="carousel-example-caption" class="carousel slide" data-ride="carousel">
+                                           <ol class="carousel-indicators">
+                                            <?php $start=0;?>
+                                            @foreach ($data['addevents'] as $addevent )  
+                                                    @if($start==0)
+                                                    
+                                                        <li data-target="#carousel-example-caption" data-slide-to=" {{$addevent->id}} " class="active"></li>
+                                                        <?php $start++;?>
+                                                    
+                                                    @else
+                                                    
+                                                       <li data-target="#carousel-example-caption" data-slide-to=" {{$addevent->id}} " ></li>
+                                                    
+                                                    @endif
+                                             @endforeach
+                                            </ol>
+                                           <div class="carousel-inner" role="listbox">
+                                             <?php $sample=0;?>
+                                             @foreach ($data['addevents'] as $addevent )  
+                                                @if($sample==0)
+                                                
+                                                    <div class="carousel-item active">
+                                                        <h5> {{$addevent->title}} </h5><hr>
+                                                        <br>
+                                                        <h6>{{$addevent->subtitle}}</h6>
+                                                        <br>
+                                                        <img  width="300px" height="200px" src="storage/attachment1/{{$addevent->attachment1}}"  alt="Card image cap"> 
+                                                        <p class="card-text">{{$addevent->description}}</p>
+                                                          
+                                                        <div class="card-footer text-muted">
+                                                            <span class="float-left">posted:{{$addevent->created_at}}</span>
+                                                            </div>
+                                                        <div class="carousel-caption">
+                                                          
+                                                        
+                                                       </div>
+                                                  </div>
+                                                  <?php $sample++;?>
+                                                
+                                                @else
+                                                          <div class="carousel-item "> 
+                                                            <h5> {{$addevent->title}} </h5><hr>
+                                                            <br>
+                                                            <h6>{{$addevent->subtitle}}</h6>
+                                                            <br>
+                                                            <img  width="300px" height="200px" src="storage/attachment1/{{$addevent->attachment1}}"  alt="Card image cap"> 
+                                                            <p class="card-text">{{$addevent->description}}</p>
+                                                              
+                                                            <div class="card-footer text-muted">
+                                                                <span class="float-left">posted:{{$addevent->created_at}}</span>
+                                                                </div>
+                                                            <div class="carousel-caption">
+                                                              
+                                                            
+                                                           </div>
+                                                    </div>
+                                                @endif
+                                             @endforeach
+                                           </div>
+                                           <a class="carousel-control-prev" href="#carousel-example-caption" role="button" data-slide="prev">
+                                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                               <span class="sr-only">Previous</span>
+                                           </a>
+                                           <a class="carousel-control-next" href="#carousel-example-caption" role="button" data-slide="next">
+                                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                               <span class="sr-only">Next</span>
+                                           </a>
+                                       </div>
                                    </div>
                                </div>
-                               @endforeach
-                            @else 
-                            <p> no data found</p>
-                            @endif
-                            {{-- news display --}}
+                           </div>
+                           {{-- news display --}}
+                           <div class="card" style="height: 600px;">
+                            <div class="card-header mb-1">
+                               <h4 class="card-title">News</h4>  
+                            </div>
+                           <div class="card-content">
+                               <div class="card-body">
+                                   <div id="carousel-example-caption" class="carousel slide" data-ride="carousel">
+                                       <ol class="carousel-indicators">
+                                        <?php $even=0;?>
+                                        @foreach ($data['addnews'] as $addnews )  
+                                                @if($even==0)
+                                                
+                                                    <li data-target="#carousel-example-caption" data-slide-to=" {{$addnews->id}} " class="active"></li>
+                                                    <?php $even++;?>
+                                                
+                                                @else
+                                                
+                                                   <li data-target="#carousel-example-caption" data-slide-to=" {{$addnews->id}} " ></li>
+                                                
+                                                @endif
+                                         @endforeach
+                                        </ol>
+                                       <div class="carousel-inner" role="listbox">
+                                         <?php $sample1=0;?>
+                                         @foreach ($data['addnews'] as $addnews )  
+                                            @if($sample1==0)
+                                            
+                                                <div class="carousel-item active">
+                                                    <h5> {{$addnews->title}} </h5><hr>
+                                                    <br>
+                                                    <h6>{{$addnews->subtitle}}</h6>
+                                                    <br>
+                                                    <img  width="300px" height="200px" src="storage/attachmentnews/{{$addnews->attachment1}}"  alt="Card image cap"> 
+                                                    <p class="card-text">{{$addnews->description}}</p>
+                                                      
+                                                    <div class="card-footer text-muted">
+                                                        <span class="float-left">posted:{{$addnews->created_at}}</span>
+                                                        </div>
+                                                    <div class="carousel-caption">
+                                                      
+                                                    
+                                                   </div>
+                                              </div>
+                                              <?php $sample1++;?>
+                                            
+                                            @else
+                                                      <div class="carousel-item "> 
+                                                        <h5> {{$addnews->title}} </h5><hr>
+                                                    <br>
+                                                    <h6>{{$addnews->subtitle}}</h6>
+                                                    <br>
+                                                    <img  width="300px" height="200px" src="storage/attachmentnews/{{$addnews->attachment1}}"  alt="Card image cap"> 
+                                                    <p class="card-text">{{$addnews->description}}</p>
+                                                      
+                                                    <div class="card-footer text-muted">
+                                                        <span class="float-left">posted:{{$addnews->created_at}}</span>
+                                                        </div>
+                                                    <div class="carousel-caption">
+                                                      
+                                                    
+                                                   </div>
+                                                </div>
+                                            @endif
+                                         @endforeach
+                                       </div>
+                                       <a class="carousel-control-prev" href="#carousel-example-caption" role="button" data-slide="prev">
+                                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                           <span class="sr-only">Previous</span>
+                                       </a>
+                                       <a class="carousel-control-next" href="#carousel-example-caption" role="button" data-slide="next">
+                                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                           <span class="sr-only">Next</span>
+                                       </a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                           {{-- 
                             @if (count ($data['addnews'])>0)
                             @foreach ($data['addnews'] as $addnews )
                            
                             <div class="card" style="height: 600px;">
                                 <div class="card-header mb-1">
                                 <h4 class="card-title">News</h4>
-                                </div>
+                               {{--  {{$data['addevents']->links()}} --}}
+                               {{--  </div>
                              <div class="card-content " style="padding:5%">
                                     <h5> {{$addnews->title}} </h5><hr>
                                     <br>
@@ -218,8 +372,8 @@
                               @endforeach
                               @else 
                               <p> no data found</p>
-                              @endif
-                         </div>
+                              @endif --}} 
+                         
                         
                         <br>
                             <div class="card">
@@ -360,4 +514,14 @@
         </div>
     </div>
 </div>
+
+{{-- <script type="text/javascript"> 
+    function like() { 
+        document.getElementById('likeme').className = "fa fa-thumbs-o-up text-danger font-medium-2 mr-50"; 
+        
+    } 
+</script>  --}}
+
+
+
 @endsection

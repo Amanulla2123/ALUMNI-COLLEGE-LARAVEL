@@ -18,7 +18,7 @@ class CreatepostController extends Controller
     public function index()
     {
 
-       
+        
         $addposts=Createpost::orderBy('created_at', 'desc')->paginate(1);
         return view('user.createpost')->with('addposts',$addposts);
      
