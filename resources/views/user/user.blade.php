@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="user-page-info">
                                             <p class="mb-0">{{$post->name}}</p>
-                                            <span class="font-small-2">{{$post->created_at->format('Y-m-d')}}</span>
+                                            <span class="font-small-2">{{$post->created_at}}</span>
                                         </div>
                                         <div class="ml-auto user-like text-danger"><i class="fa fa-heart"></i></div>
                                     </div>
