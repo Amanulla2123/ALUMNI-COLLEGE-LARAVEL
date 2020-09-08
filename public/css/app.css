@@ -73,9 +73,9 @@ body {
   color: #212529;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.85);
- /*  background-image: url(https://static.vecteezy.com/system/resources/previews/000/669/565/non_2x/futuristic-scientific-hexagonal-dark-blue-background.jpg); */
+/*  background-image: url("banner-4.jpg"); 
+ */
 }
-
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

@@ -74,5 +74,6 @@ Route::get('/admin/approve/{id}', 'ViewpostController@approve')->middleware('adm
 Route::resource('addfriend', 'AddfriendController')->middleware('user');
 //Route::resource('user', 'LikeController')->middleware('user');
 Route::post('/user/{id}', 'UserController@store')->name('user')->middleware('user');
+//Route::post('/user/{id}', 'UserController@cover')->name('use')->middleware('user');
 Route::get('/user/user/{id}', 'UserController@insert')->name('user')->middleware('user');
 

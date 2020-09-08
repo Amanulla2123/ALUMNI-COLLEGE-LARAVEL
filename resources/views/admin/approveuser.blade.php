@@ -28,9 +28,8 @@
                     <th><strong>FROM YEAR</strong></th>
                     <th><strong>TO YEAR</strong></th>
                     <th><strong>PASSOUT YEAR</strong></th>
-                    <th><strong>ROLE</strong></th>
-                    <th><strong>APPROVE</strong></th>
-                    <th><strong>DECLINE</strong></th>
+                    <th><strong>STATUS</strong></th>
+                    <th><strong>ACTION</strong></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -50,12 +49,24 @@
                     <td>{{$approve->Fromyear}}</td>  
                     <td>{{$approve->Toyear}}</td>  
                     <td>{{$approve->Passoutyear}}</td>  
-                    <td>{{$approve->role}}</td>
-                    <td><a href="/admin/approveuser/{{$approve->userid}}" class="btn btn-outline-success mr-1 mb-1 waves-effect waves-light"><i class="feather icon-user-check">Approve</a></td>
-                    <td><form action="{{action('ApproveuserController@destroy', $approve['userid'])}}"  method ="POST"   > 
+                    <td>
+                      @if($approve->role==0)
+                        Requested
+                      @endif
+                      @if($approve->role==3)
+                        Approved
+                      @endif
+                     
+                    </td>
+                    <td>
+                      @if($approve->role==0)
+                      <a href="/admin/approveuser/{{$approve->userid}}" class="btn btn-outline-success mr-1 mb-1 waves-effect waves-light"><i class="feather icon-user-check">Approve</a></i>
+                      @endif
+
+                      <form action="{{action('ApproveuserController@destroy', $approve['userid'])}}"  method ="POST"   > 
                       {{csrf_field()}}  
                       <input type="hidden"    name="_method"  value="DELETE" >
-                             <button type="submit" class ="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light"><i class="feather icon-user-x"></i>DECLINE</button>
+                             <button type="submit" class ="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light"><i class="feather icon-user-x"></i>REJECT</button>
                        </form>
                     </td>
                     </tr>

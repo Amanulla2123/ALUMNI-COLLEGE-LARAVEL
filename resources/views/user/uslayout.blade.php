@@ -116,30 +116,6 @@
                                             </div><small>
                                                 <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">5 hour ago</time></small>
                                         </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i class="feather icon-alert-triangle font-medium-5 danger"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="danger media-heading yellow darken-3">Warning notifixation</h6><small class="notification-text">Server have 99% CPU usage.</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Today</time></small>
-                                        </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i class="feather icon-check-circle font-medium-5 info"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="info media-heading">Complete the task</h6><small class="notification-text">Cake sesame snaps cupcake</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last week</time></small>
-                                        </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i class="feather icon-file font-medium-5 warning"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="warning media-heading">Generate monthly report</h6><small class="notification-text">Chocolate cake oat cake tiramisu marzipan</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last month</time></small>
-                                        </div>
                                     </a></li>
                                 <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
@@ -147,11 +123,11 @@
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::user()->name }}</span><span class="user-status">Available</span></div><span><img class="round" src="upload/{{ Auth::user()->Profile }}" alt="avatar" height="40" width="40"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href=""><i class=""></i> My Inbox</a><a class="dropdown-item" href=""><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href=""><i class="feather icon-message-square"></i> Chats</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                 {{ __('Logout') }}
+                                  <i class="feather icon-power"></i>{{ __('Logout') }}
                              </a>
 
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -263,7 +239,7 @@
                 </li>
                 <li class=" navigation-header"><span>Roles</span>
                 </li>
-                <li class=" nav-item"><a href="/addfriend"><i class="feather icon-user-plus"></i>Add FRIENDS</a>
+                <li class=" nav-item"><a href="/addfriend"><i class="feather icon-user-plus"></i>Add Friends</a>
                 </li>
                 
                 <li class=" nav-item"><a href="calenderuser"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
@@ -273,10 +249,7 @@
                 </li>
                 <li class="active nav-item"><a href="createpost"><i class="feather icon-edit-1"></i><span class="menu-title" data-i18n="Profile">CREATE POST</span></a>
                 </li><br>
-                <li class="active nav-item"><a href=""><i class="feather icon-plus-square"></i><span class="menu-title" data-i18n="Profile">...</span></a>
-                </li>
-               
-         
+           
         </div>
     </div>
     <!-- END: Main Menu-->
@@ -290,8 +263,8 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="" target="_blank">PACE ALUMINI</a>All rights Reserved</span><span class="float-md-right d-none d-md-block"><i class="feather icon-heart pink"></i></span>
-           {{--  <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button> --}}
+        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2020<a class="text-bold-800 grey darken-2" href="" target="_blank">PACE ALUMNI</a>All rights Reserved</span><span class="float-md-right d-none d-md-block"><img src="assets/images/logo.png" width="30px" alt=""></span>
+        {{--  <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button> --}}
         </p>
     </footer>
     <!-- END: Footer-->
@@ -311,7 +284,7 @@
   <!-- BEGIN: Page Vendor JS-->
   <!-- END: Page Vendor JS-->
 
-  <!-- BEGIN: Theme JS-->
+ <!-- BEGIN: Theme JS-->
   <script src="assets/js/core/app-menu.js"></script>
   <script src="assets/js/core/app.js"></script>
   <script src="assets/js/scripts/components.js"></script>

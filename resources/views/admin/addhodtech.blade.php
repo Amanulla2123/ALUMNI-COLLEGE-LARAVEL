@@ -104,6 +104,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-12">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <span>Profile Image</span>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="position-relative has-icon-left">
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input" id="Profile" name="Profile" >
+                                                                    <label class="custom-file-label" for="Profile">Choose file</label>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-8 offset-md-4">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                    

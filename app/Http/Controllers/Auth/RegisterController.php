@@ -88,9 +88,9 @@ class RegisterController extends Controller
             'Schoolname' =>['required','string'],
             'Adnumber' =>['required','string'], 
             'Profile'=> ['required'], 
-            'Fromyear' => ['required'],
-            'Toyear' => ['required'],
-            'Passoutyear'=> ['required'], 
+            'Fromyear' => ['required_without:Passoutyear'],
+            'Toyear' => ['required_without:Passoutyear'],
+            'Passoutyear'=> ['required_without:Fromyear,Passoutyear'], 
            
            
         ]);

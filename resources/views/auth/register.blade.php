@@ -2,10 +2,9 @@
 
 @section('content')
 
-<div class="container"><img  class= "mx-auto d-block" src="assets/images/pages/graphic-1.png" height="200px" alt="">
-    <div class="row justify-content-center">
-        
-        <div class="col-md-7">
+<div class="container "><img   src="assets/images/pages/graphic-1.png" class="mx-auto d-block" height="200px" width="300px" alt="">
+    <div class="row ">
+        <div class="col-md-8 offset-2 ">
             <div class="card">
                {{--  <div class="card-header"></div> --}}
 
@@ -13,6 +12,7 @@
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                           <h5><strong>PERSONAL DETAILS</h5></strong>
+                          
                         <div class="form-group row">
                             <label for="name" class="col-md-3 col-form-label text-md-left">{{ __('Name') }}</label>
 
@@ -628,7 +628,7 @@
                             </div>
                         </div> 
                         <div class="form-group row">
-                            <label for="Passoutyear" class="col-md-3 col-form-label text-md-left"style="padding:10px">Passoutyear</label>
+                            <label for="Passoutyear" class="col-md-3 col-form-label text-md-left"style="padding:10px">Passout Year</label>
 
                             <div class="col-md-6">
                                 <input id="Passoutyear" type="month" min="2003-01" class="form-control @error('Passoutyear') is-invalid @enderror" name="Passoutyear" >
@@ -640,6 +640,7 @@
                                 @enderror
                             </div>
                         </div>
+                        <h5 style="text-align: center"><strong>OR</strong></h5>
                         <h6>Year Of Study</h6>
                         <div class="form-group row">
                             <label for="YearOfStudy" class="col-md-3 col-form-label text-md-right"style="padding:10px">From</label>
@@ -681,7 +682,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-3 col-form-label text-md-left"style="padding:10px">{{ __('Confirm Password') }}</label>
 
@@ -695,13 +695,12 @@
                             <div class="col-md-6">
                                 <input id="Profile" type="file"  name="Profile">
 
-                               
                             </div>
                         </div>
                       
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-lg">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -710,6 +709,9 @@
                 </div>
             </div>
         </div>
+     
     </div>
+
 </div>
+
 @endsection

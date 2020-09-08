@@ -33,21 +33,54 @@ class AddhodtechController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
         $this->validate($request,[
             'role'=> 'required',
             'firstname'=> 'required',
             'email'=> 'required',
             'password'=> 'required',
+            'Profile'=> ['required'], 
             
            
-        ]);
-        
+        ]); 
+        if($request->hasFile('Profile')){
+       $fileNameToStore = time() . '.' . $request->file('Profile')->getClientOriginalExtension();
+
+        $request->file('Profile')->move(
+        base_path() . '/public/upload/',  $fileNameToStore);
+
+
+        /*  if($request->hasFile('Profile')){
+        // Get filename with the extension
+        $filenameWithExt = $request->file('Profile')->getClientOriginalName();
+        // Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // Get just ext
+        $extension = $request->file('Profile')->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        // Upload Image
+        $path = $request->file('Profile')->storeAs('/public/upload', $fileNameToStore); */
+
+
+       //$thumbStore = 'thumb.'.$filename.'_'.time().'.'.$extension;
+       // $thumb = Image::make($request->file('Profilepic')->getRealPath());
+        //$thumb->resize(80, 80);
+        //$thumb->save('storage/profile/'.$thumbStore);
+      
+
+    } else {
+        $fileNameToStore = 'profileimage.jpg';
+    }
+
        
         $user =new User;
             $user->role = $request-> input('role');
             $user->name = $request-> input('firstname');
             $user->email=$request->input('email');
+            $user->Profile= $fileNameToStore;
+
             $user->password = Hash::make($request->input('password'));
 
           

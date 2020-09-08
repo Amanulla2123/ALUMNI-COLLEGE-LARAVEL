@@ -15,10 +15,7 @@
             </div>
             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                 <div class="form-group breadcrum-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -29,17 +26,53 @@
                         <div class="profile-header mb-2">
                             <div class="relative">
                                 <div class="cover-container">
-                                    <img class="img-fluid bg-cover rounded-0 w-100" src="assets/images/profile/user-uploads/cover.jpg" alt="User Profile Image">
+                                    <img class="img-fluid bg-cover rounded-0 w-100" src="assets/images/banner/banner-9.jpg" alt="User Profile Image">
                                 </div>
                                 <div class="profile-img-container d-flex align-items-center justify-content-between">
                                     <img src="upload/{{ Auth::user()->Profile }}" class="rounded-circle img-border box-shadow-1" alt="Card image">
                                     <div class="float-right">
-                                        <button type="button" class="btn btn-icon btn-icon rounded-circle btn-primary mr-1">
+                                        <button type="button" class="btn btn-icon btn-icon rounded-circle btn-primary mr-1"data-toggle="modal" data-target="#exampleModal">
                                             <i class="feather icon-edit-2"></i>
                                         </button>
                                         <button type="button" class="btn btn-icon btn-icon rounded-circle btn-primary">
-                                            <i class="feather icon-settings"></i>
+                                          <i class="feather icon-settings"></i>
                                         </button>
+                                        {{-- modal for cover image --}}
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Update CoverPic</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="" method="POST"  enctype ="multipart/form-data" action="">
+                                                        {{csrf_field()}}
+                                                        <div class="form-body">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <fieldset class="form-group">
+                                                                        <label for="coverImage">Cover Image</label>
+                                                                        <div class="custom-file">
+                                                                            <input type="file" class="custom-file-input" id="coverImage" name="coverImage" >
+                                                                            <label class="custom-file-label" for="coverImage">Choose file</label>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="submit" class="btn btn-primary">UPDATE</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          {{-- end modal --}}
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +109,7 @@
                         <div class="col-lg-8 col-12">
                             @if (count ($data['posts'])>0)
                             @foreach ($data['posts'] as $post )  
+                
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-start align-items-center mb-1">
@@ -84,7 +118,7 @@
                                         </div>
                                         <div class="user-page-info">
                                             <p class="mb-0">{{$post->name}}</p>
-                                            <span class="font-small-2">{{$post->created_at}}</span>
+                                            <span class="font-small-2">{{$post->created_at->format('Y-m-d')}}</span>
                                         </div>
                                         <div class="ml-auto user-like text-danger"><i class="fa fa-heart"></i></div>
                                     </div>
@@ -92,28 +126,25 @@
                                     <h6>{{$post->subtitle}}</h6>
                                     <p>{{$post->description}}</p>
                                     <img class="img-fluid rounded-sm mb-2" src="storage/students/posts/{{$post->attachment1}}" alt="img "  height="300"  width="670">
-                                      
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="d-flex align-items-center">
                                             <?php $likeme=0; ?>
                                             @foreach ($data['likes'] as $like )
-                                            
-                                            @if($like->postId == $post->id && $like->likeduserId == Auth::user()->id )
-                                         <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50 text-danger"></i>
-                                            </a>
-                                            <?php $likeme=1;?>
-                                            <script>
-                                                 
+                                            @if(($like->postId == $post->id)&&($like->likeduserId == Auth::user()->id) )
+                                               <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50 text-danger"></i>
+                                               </a>
+                                               <?php $likeme=1;?>
+                                               <script>
                                                 $('#like{{$post->id}}').on("click",function(){  
                                                   window.location.href = '/user/user/{{$post->id}}';
                                                 });
                                                 </script>
-                                                @endif
-                                                @endforeach
+                                            @endif
+                                            @endforeach
                                                 @if($likeme==0)
-                                                <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50"></i>
-                                                </a>
-                                                <script>
+                                                    <a  id="like{{$post->id}}" class="like" > <i class="fa fa-thumbs-o-up font-large-1 mr-50"></i>
+                                                    </a>
+                                                    <script>
                                                      
                                                     $('#like{{$post->id}}').on("click",function(){  
                                                       window.location.href = '/user/user/{{$post->id}}';
@@ -148,14 +179,14 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <p class="ml-auto d-flex align-items-center">
-                                           
-                                            <i class="feather icon-message-square font-medium-2 mr-50"></i>77 
-                                        </p>
+                                       
                                     </div>
                                     {{-- comment section --}}
+                                    <?php $x = 0; ?>
                                     @foreach ($data['comment'] as $comment ) 
+                                 
                                     @if ($post->id == $comment->postId) 
+                                    <?php if($x == 4) break; ?>
                                     <div class="d-flex justify-content-start align-items-center mb-1">
                                         <div class="avatar mr-50">
                                             <img src="upload/{{$comment->Profile}}" alt="Avatar" height="30" width="30">
@@ -167,11 +198,15 @@
                                         {{--  <div class="ml-auto cursor-pointer">
                                             <i class="feather icon-heart mr-50"></i>
                                             <i class="feather icon-message-square"></i>
+
                                         </div> --}}
+                                        <?php $x++; ?>
                                     </div>
                                     @else 
                                     <p></p>
+
                                     @endif
+                                 
                                     @endforeach
                                    
                                     <form class="" method="post"  enctype ="multipart/form-data" action="{{action('UserController@store', $post->id)}}">
@@ -376,42 +411,7 @@
                          
                         
                         <br>
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Latest Photos</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-01.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-02.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-03.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-04.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-05.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-06.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-07.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-08.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                        <div class="col-md-4 col-6 user-latest-img">
-                                            <img src="assets/images/profile/user-uploads/user-09.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                  
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                     <h4>Suggestions</h4>

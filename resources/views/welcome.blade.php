@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ALUMINI WELCOME</title>
+    <title>ALUMNI WELCOME</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,7 +41,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="index.html">
-                                    <img src="http://iiss.ae/images/pace_group1.png" width="190px" alt="">
+                                    <img src="assets/images/pacelogo.png" width="190px" alt="">
                                 </a>
                             </div>
                         </div>
@@ -50,9 +50,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="">home</a></li>
-                                       
                                         <li><a href="">About</a></li>
-                                       
                                         <li><a href="">Contact</a></li>
                                     </ul>
                                 </nav>
@@ -64,7 +62,6 @@
                                     <i class="flaticon-user"></i>
                                     <span>log in</span>
                                 </a>
-                                
                             </div>
                         </div>
                         <div class="col-12">
@@ -82,15 +79,38 @@
         <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-6 col-md-6">
+                    <div class="col-xl-7 col-md-6">
                         <div class="illastrator_png">
                             <img src="assets/img/banner/edu_ilastration.png" alt="">
                         </div>
                     </div>
-                    <div class="col-xl-6 col-md-6">
+                    <div class="col-xl-5 col-md-6">
+                    
+                                <div class="row">
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/GAES.jpg"    class="img-fluid mb-2 rounded-lg" alt="avtar img holder">
+                                       
+                                    </div>
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/IIS.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
+                                    </div>
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/PACE.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
+                                    </div>
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/CBS.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
+                                    </div>
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/dps.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
+                                    </div>
+                                    <div class="col-md-3 col-4 user-latest-img">
+                                        <img src="assets/schools/pbs.jpg" class="img-fluid mb-1 rounded-sm" alt="avtar img holder">
+                                    </div>
+
+                        </div>
                         <div class="slider_info  justify-content-center">
                             {{-- <img src="assets/images/logo.png" alt=""> --}}
-                            <h3>PACE ALUMINI</h3>
+                            <h3>PACE ALUMNI</h3>
                                 <a href="login"class="boxed_btn  " >Get started.....</a>
                         </div>
                     </div>
@@ -107,7 +127,6 @@
     <!-- popular_courses_start -->
    
     <!-- form itself end -->
-
 
     <!-- JS here -->
     <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>

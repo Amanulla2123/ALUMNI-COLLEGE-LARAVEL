@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>PACE ALUMINI</title>
+    <title>PACE ALUMNI</title>
     <link rel="apple-touch-icon" href="assets/images/logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
     <!-- Scripts -->
@@ -21,6 +21,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <style>
+    body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #212529;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.85);
+        background-image: url("assets/images/bg.jpg"); 
+       
+      }
+</style>
+    
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

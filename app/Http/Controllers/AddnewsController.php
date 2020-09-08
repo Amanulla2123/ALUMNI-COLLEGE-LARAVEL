@@ -40,7 +40,7 @@ class AddnewsController extends Controller
         $this->validate($request,[
         'title'=> 'required',
         'subtitle'=> 'required',
-        'attachment1'=> 'required',
+       // 'attachment1'=> 'required',
         'description'=> 'required',
         
        
